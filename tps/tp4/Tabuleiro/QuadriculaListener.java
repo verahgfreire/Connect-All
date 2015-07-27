@@ -18,7 +18,7 @@ public class QuadriculaListener implements MouseListener{
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		quadricula.desenhar(new Peca(1));
+		quadricula.desenhar(new Ligacao(Color.BLUE));
 	}
 
 	public void mouseExited(MouseEvent e) {
@@ -32,7 +32,7 @@ public class QuadriculaListener implements MouseListener{
 
     public QuadriculaListener(Quadricula quadricula){
     	super();
-    	this.quadricula=quadricula;	
+    	this.quadricula = quadricula;	
     }
 
 }
