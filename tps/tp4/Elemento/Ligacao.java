@@ -10,8 +10,8 @@ public class Ligacao extends Elemento{
 
 	private Color color;
 
-	public Ligacao(Color color){
-		super();
+	public Ligacao(Color color,int x, int y){
+		super(x,y);
 		this.color = color;
 	}
 

@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class ElementoVazio extends Elemento{
 
-	public ElementoVazio(){
-		super();	
+	public ElementoVazio(int x, int y){
+		super(x,y);	
 	}
 
 	@Override

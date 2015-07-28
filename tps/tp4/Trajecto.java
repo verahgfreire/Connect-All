@@ -2,18 +2,37 @@ package tps.tp4;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import tps.tp4.Elemento.Elemento;
+import tps.tp4.Elemento.*;
+import java.awt.*;
 
 public class Trajecto {
 	
-	ArrayList<Elemento> percurso;
+	private ArrayList<Elemento> percurso;
+	private Color corActual;
+	private int valorActual;
 
 	public Trajecto() {
 		percurso = new ArrayList<Elemento>();
+		corActual = null;
+		valorActual = 0;
 	}
 
-	public void inserir(Elemento e){
-		//percurso.add(e);
+	public Color getColor(){
+		return corActual;
+	}
+	public int getValue(){
+		return valorActual;
+	}
+
+
+	public void inserir(Elemento el){
+
+		if(el instanceof Peca){
+			valorActual = ((Peca)el).valor();
+			corActual = ((Peca)el).color();
+		}
+		
+		percurso.add(el);
 		
 		 /*System.out.print("{");
 		 for (int i = 0; i < percurso.size(); i++) {
@@ -31,6 +50,16 @@ public class Trajecto {
 			}
 		}*/
 		return null;
+	}
+
+	public Elemento ultimo(){
+		if(percurso.size()==0){
+			return null;
+		}
+		return percurso.get(percurso.size() - 1);
+	}
+	public boolean contem(Elemento e){
+		return percurso.contains(e);
 	}
 
 	public void eliminar(int x, int y){

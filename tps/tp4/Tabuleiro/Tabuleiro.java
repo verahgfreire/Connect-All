@@ -20,12 +20,14 @@ public class Tabuleiro extends JPanel{
 
 		dim = 4;
 		name = "Easy";
-		this.setLayout(new GridLayout(4,4));
+		trajecto = new Trajecto();
+
+		this.setLayout(new GridLayout(dim,dim));
 		setPreferredSize(new Dimension(500, 500));
 
-		for(int y=0; y<4; y++){
-			for(int x=0; x<4; x++){
-				add(new Quadricula(x,y));
+		for(int y=0; y<dim; y++){
+			for(int x=0; x<dim; x++){
+				add(new Quadricula(trajecto,x,y));
 			}
 		}
 		desenharPecas(6);
@@ -70,7 +72,7 @@ public class Tabuleiro extends JPanel{
 		try {
 
 			String folder = "" + dim + dim + name.replace(" ", "");
-			String path = "/Users/verafreire/Desktop/Projecto/Connect-All/tps/tp4/levels/" + folder + "/" + folder + "_";
+			String path = Jogo.ROOTPATH+"tps/tp4/levels/" + folder + "/" + folder + "_";
 			if (numPuzzle < 10)
 				path += "0";
 			leitor = new Scanner(new File(path + numPuzzle + ".txt"));
@@ -89,7 +91,7 @@ public class Tabuleiro extends JPanel{
 				int yPeca = Integer.parseInt(leitor.next().substring(0, 1));
 
 				//criar peca
-				quadricula(xPeca,yPeca).desenhar(new Peca(valor));
+				quadricula(xPeca,yPeca).desenhar(new Peca(valor,getColor(valor),xPeca,yPeca));
 
 				valor++;
 			}
@@ -99,18 +101,5 @@ public class Tabuleiro extends JPanel{
 		}
 
 		leitor.close();
-	}
-
-	public static void main(String args[]){
-		
-		JFrame frame = new JFrame("Tabuleiro");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        Tabuleiro t = new Tabuleiro();
-        
-        frame.getContentPane().add(t);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setVisible(true);
 	}
 }
