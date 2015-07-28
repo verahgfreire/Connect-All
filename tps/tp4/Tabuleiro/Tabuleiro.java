@@ -16,7 +16,7 @@ public class Tabuleiro extends JPanel{
 	private Trajecto trajecto;
 	private String name;
 
-	public Tabuleiro(){
+	public Tabuleiro(){    
 
 		dim = 4;
 		name = "Easy";
@@ -24,10 +24,20 @@ public class Tabuleiro extends JPanel{
 
 		this.setLayout(new GridLayout(dim,dim));
 		setPreferredSize(new Dimension(500, 500));
+
+	}
+	public void desenhar(){
+		for(int y=0; y<dim; y++){
+			for(int x=0; x<dim; x++){
+				add(new Quadricula());
+				Elemento e = new ElementoVazio(x,y);
+			}
+		}
+		desenharPecas(6);
 	}
 
 	public Quadricula quadricula(int x, int y){
-		return (Quadricula) getComponents()[x+y*dim];
+		return (Quadricula)getComponents()[x+y*dim];
 	}
 
 	public Trajecto trajecto(){
@@ -35,14 +45,6 @@ public class Tabuleiro extends JPanel{
 	}
 	public int dimensao(){
 		return dim;
-	}
-	public void criarTabuleiro(){
-		for(int y=0; y<dim; y++){
-			for(int x=0; x<dim; x++){
-				new ElementoVazio(x,y);
-			}
-		}
-		desenharPecas(6);
 	}
 
 	@Override

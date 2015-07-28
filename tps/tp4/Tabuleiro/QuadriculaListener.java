@@ -27,7 +27,9 @@ public class QuadriculaListener implements MouseListener{
 	public void mouseClicked(MouseEvent m) {	
 		
 		if(elem.podeEntrar(Jogo.tabuleiro().trajecto().getValue())){
-			new Ligacao(elem.getTabX(),elem.getTabY());
+			if(!(elem instanceof Peca)){
+				elem = new Ligacao(elem.getTabX(),elem.getTabY());
+			}
 			Jogo.tabuleiro().trajecto().inserir(elem);
 		}
 	}

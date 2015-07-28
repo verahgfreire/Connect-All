@@ -22,9 +22,6 @@ public abstract class Elemento extends JLabel{
 		setOpaque(true);
 		setBackground(Color.BLACK);
 
-		int dim = Jogo.tabuleiro().dimensao();
-		Jogo.tabuleiro().setComponentZOrder(this,x+y*dim);
-
 		addMouseListener(new QuadriculaListener(this));
 	}
 

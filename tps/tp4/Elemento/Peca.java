@@ -18,8 +18,10 @@ public class Peca extends Elemento{
 
 	public Peca(int num, Color cor, int x, int y){
 		super(x,y);
+
 		this.num = num;
 		this.cor = cor;
+		Jogo.tabuleiro().quadricula(x,y).replace(this);
 	}
 
 	public Color color(){
@@ -28,6 +30,9 @@ public class Peca extends Elemento{
 	public int valor(){
 		return num;
 	}
+	//public void desenhar(){
+
+	//}
 
 	@Override
 	public boolean podeEntrar(int currentValue){

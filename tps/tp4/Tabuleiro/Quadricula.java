@@ -10,44 +10,23 @@ import tps.tp4.Trajecto;
 
 public class Quadricula extends JPanel{
 
-	private int x;
-	private int y;
-	private Elemento elem;
+	Elemento elem = null;
 
-	public Quadricula(Trajecto trajecto,int x, int y){
-		this.x = x;
-		this.y = y;
+	public Quadricula(){
 
 		setLayout(new CardLayout());
 
-		Elemento e = new ElementoVazio(x,y);
-		elem = e;
-		add(elem);
-
-		addMouseListener(new QuadriculaListener(this,trajecto));
+		//addMouseListener(new QuadriculaListener(this,trajecto));
 	}
 
-	public void desenhar(Elemento e){
-		
-		if(e instanceof Ligacao && elem instanceof Peca)
-			return;
-
+	public void replace(Elemento e){
 		remove(elem);
-		elem = e;
-		add(elem);
-		revalidate();
-		repaint();
+		add(e);
+		elem=e;
 	}
-
-	public int getTabX() {
-		return x;
-	}
-	public int getTabY() {
-		return y;
-	}
-
-	public Elemento elemento(){
-		return elem;
+	public void adicionar(Elemento e){
+		add(e);
+		elem=e;
 	}
 
     @Override

@@ -13,8 +13,14 @@ public class Ligacao extends Elemento{
 
 	public Ligacao(int x, int y){
 		super(x,y);
+		Jogo.tabuleiro().quadricula(x,y).replace(this);
 		this.color = Jogo.tabuleiro().trajecto().getColor();
+		Jogo.tabuleiro().quadricula(x,y).replace(this);
 	}
+
+	//public void desenhar(){
+		
+	//}
 
 	@Override
     protected void paintComponent (Graphics g){
