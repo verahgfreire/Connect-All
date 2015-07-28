@@ -2,19 +2,18 @@ package tps.tp4.Tabuleiro;
 
 import tps.tp4.Elemento.*;
 import tps.tp4.Trajecto;
+import tps.tp4.*;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class QuadriculaListener implements MouseListener{
 
-	protected Quadricula quadricula;
-	private Trajecto trajecto;
+	protected Elemento elem;
 
-	public QuadriculaListener(Quadricula quadricula, Trajecto trajecto){
+	public QuadriculaListener(Elemento e){
     	super();
-    	this.quadricula = quadricula;
-    	this.trajecto = trajecto;	
+    	this.elem = e;	
     }
 
 	public void mouseReleased(MouseEvent m) {
@@ -27,11 +26,9 @@ public class QuadriculaListener implements MouseListener{
 
 	public void mouseClicked(MouseEvent m) {	
 		
-		if(quadricula.elemento().podeEntrar(trajecto.getValue())){
-			int x = quadricula.elemento().getTabX();
-			int y = quadricula.elemento().getTabY();
-			quadricula.desenhar(new Ligacao(trajecto.getColor(),x,y));
-			trajecto.inserir(quadricula.elemento());
+		if(elem.podeEntrar(Jogo.tabuleiro().trajecto().getValue())){
+			new Ligacao(elem.getTabX(),elem.getTabY());
+			Jogo.tabuleiro().trajecto().inserir(elem);
 		}
 	}
 

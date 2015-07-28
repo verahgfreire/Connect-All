@@ -24,13 +24,6 @@ public class Tabuleiro extends JPanel{
 
 		this.setLayout(new GridLayout(dim,dim));
 		setPreferredSize(new Dimension(500, 500));
-
-		for(int y=0; y<dim; y++){
-			for(int x=0; x<dim; x++){
-				add(new Quadricula(trajecto,x,y));
-			}
-		}
-		desenharPecas(6);
 	}
 
 	public Quadricula quadricula(int x, int y){
@@ -39,6 +32,17 @@ public class Tabuleiro extends JPanel{
 
 	public Trajecto trajecto(){
 		return trajecto;
+	}
+	public int dimensao(){
+		return dim;
+	}
+	public void criarTabuleiro(){
+		for(int y=0; y<dim; y++){
+			for(int x=0; x<dim; x++){
+				new ElementoVazio(x,y);
+			}
+		}
+		desenharPecas(6);
 	}
 
 	@Override
@@ -90,8 +94,7 @@ public class Tabuleiro extends JPanel{
 				int xPeca = leitor.nextInt();
 				int yPeca = Integer.parseInt(leitor.next().substring(0, 1));
 
-				//criar peca
-				quadricula(xPeca,yPeca).desenhar(new Peca(valor,getColor(valor),xPeca,yPeca));
+				new Peca(valor,getColor(valor),xPeca,yPeca);
 
 				valor++;
 			}

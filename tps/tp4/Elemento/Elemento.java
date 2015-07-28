@@ -5,7 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import tps.tp4.Jogo;
+import tps.tp4.*;
+import tps.tp4.Tabuleiro.*;
 
 public abstract class Elemento extends JLabel{
 	
@@ -16,9 +17,15 @@ public abstract class Elemento extends JLabel{
 		super();
 		this.x=x;
 		this.y=y;
+		setLayout(new CardLayout());
 		setBorder(new LineBorder(Color.GRAY, 1));
 		setOpaque(true);
 		setBackground(Color.BLACK);
+
+		int dim = Jogo.tabuleiro().dimensao();
+		Jogo.tabuleiro().setComponentZOrder(this,x+y*dim);
+
+		addMouseListener(new QuadriculaListener(this));
 	}
 
 	@Override

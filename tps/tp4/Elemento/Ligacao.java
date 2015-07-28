@@ -3,16 +3,17 @@ package tps.tp4.Elemento;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import javax.swing.border.LineBorder;
+
+import tps.tp4.*;
 
 public class Ligacao extends Elemento{
 
 	private Color color;
 
-	public Ligacao(Color color,int x, int y){
+	public Ligacao(int x, int y){
 		super(x,y);
-		this.color = color;
+		this.color = Jogo.tabuleiro().trajecto().getColor();
 	}
 
 	@Override

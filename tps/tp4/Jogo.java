@@ -27,6 +27,7 @@ public class Jogo{
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         tabActual = new Tabuleiro();
+        tabActual.criarTabuleiro();
         
         frame.getContentPane().add(tabActual);
         frame.setResizable(false);
