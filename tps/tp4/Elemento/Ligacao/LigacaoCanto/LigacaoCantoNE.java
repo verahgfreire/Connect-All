@@ -1,4 +1,4 @@
-package tps.tp4.Elemento;
+package tps.tp4.Elemento.Ligacao.LigacaoCanto;
 
 import java.awt.*;
 import java.awt.event.*;

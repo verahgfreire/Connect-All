@@ -6,7 +6,6 @@ import tps.tp4.Elemento.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import java.io.File;
 import java.util.Scanner;
 
@@ -29,8 +28,7 @@ public class Tabuleiro extends JPanel{
 	public void desenhar(){
 		for(int y=0; y<dim; y++){
 			for(int x=0; x<dim; x++){
-				add(new Quadricula());
-				Elemento e = new ElementoVazio(x,y);
+				add(new Quadricula(new ElementoVazio(x,y)));
 			}
 		}
 		desenharPecas(6);
@@ -126,5 +124,21 @@ public class Tabuleiro extends JPanel{
 		}
 
 		leitor.close();
+	}
+
+	public class Quadricula extends JPanel{
+
+		Elemento elem = null;
+
+		public Quadricula(Elemento e){
+			setLayout(new CardLayout());
+			add(e);
+			elem=e;
+		}
+		public void replace(Elemento e){
+			remove(elem);
+			add(e);
+			elem=e;
+		}
 	}
 }

@@ -1,8 +1,9 @@
-package tps.tp4;
+package tps.tp4.Tabuleiro;
+
+import tps.tp4.Elemento.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import tps.tp4.Elemento.*;
 import java.awt.*;
 
 public class Trajecto {

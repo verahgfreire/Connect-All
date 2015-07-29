@@ -5,13 +5,14 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import tps.tp4.*;
+import tps.tp4.Elemento.Ligacao.*;
+import tps.tp4.Elemento.Ligacao.LigacaoRecta.*;
 
 public class ElementoVazio extends Elemento{
 
 	public ElementoVazio(int x, int y){
 		super(x,y);	
 		pressed = false;
-		Jogo.tabuleiro().quadricula(x,y).adicionar(this);
 	}
 
 	@Override

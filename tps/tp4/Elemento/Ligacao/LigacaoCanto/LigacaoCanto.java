@@ -1,4 +1,4 @@
-package tps.tp4.Elemento;
+package tps.tp4.Elemento.Ligacao.LigacaoCanto;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import tps.tp4.*;
+import tps.tp4.Elemento.Ligacao.*;
 
 public abstract class LigacaoCanto extends Ligacao{
 
