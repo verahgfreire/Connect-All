@@ -18,14 +18,11 @@ public class Ligacao extends Elemento{
 		Jogo.tabuleiro().quadricula(x,y).replace(this);
 	}
 
-	//public void desenhar(){
-		
-	//}
-
 	@Override
     protected void paintComponent (Graphics g){
         super.paintComponent(g);
         g.setColor(color);
-        g.fillRect(0,getHeight()/3,getWidth(),getHeight()/3);
 	}
+
+	public void desenharTrajecto(){}
 }

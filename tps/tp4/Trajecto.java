@@ -41,22 +41,29 @@ public class Trajecto {
 		 System.out.println("}");*/
 	}
 
-	public Elemento obter(int x, int y){
-		/*Iterator<Elemento> iterator = percurso.iterator();
-		while (iterator.hasNext()) {
-			Elemento e = iterator.next();
-			if(e.getTabX()==x && e.getTabY()==y){
-				return e;
-			}
-		}*/
-		return null;
+	public int obter(int x, int y){
+		for (int i = 0; i < percurso.size(); i++) 
+			if(percurso.get(i).getTabX()==x && percurso.get(i).getTabY()==y)
+				return i;
+		return -1;
+		
+	}
+
+	public void replace(Elemento e, int x, int y){
+		percurso.set(obter(x,y), e);
 	}
 
 	public Elemento ultimo(){
-		if(percurso.size()==0){
+		if(percurso.size()<1){
 			return null;
 		}
 		return percurso.get(percurso.size() - 1);
+	}
+	public Elemento penultimo(){
+		if(percurso.size()<2){
+			return null;
+		}
+		return percurso.get(percurso.size() - 2);
 	}
 	public boolean contem(Elemento e){
 		return percurso.contains(e);

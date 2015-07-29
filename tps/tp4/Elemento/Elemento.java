@@ -12,6 +12,7 @@ public abstract class Elemento extends JLabel{
 	
 	protected int x;
 	protected int y;
+	protected static boolean pressed;
 	
 	public Elemento(int x,int y){
 		super();
@@ -22,7 +23,79 @@ public abstract class Elemento extends JLabel{
 		setOpaque(true);
 		setBackground(Color.BLACK);
 
-		addMouseListener(new QuadriculaListener(this));
+		// Implementação anónima da interface MouseListener()
+		addMouseListener(new MouseListener(){
+
+			// getSource() retorna Component onde MouseListener foi adicionado
+			public void mouseReleased(MouseEvent m) { 
+				((Elemento) m.getSource()).pressed(false);
+			}
+
+			public void mousePressed(MouseEvent m) {
+				((Elemento) m.getSource()).pressed(true);
+				((Elemento) m.getSource()).desenharTrajecto();
+			}
+
+			public void mouseClicked(MouseEvent m) {	
+				((Elemento) m.getSource()).desenharTrajecto();
+			}
+
+			public void mouseExited(MouseEvent m) {}
+
+			public void mouseEntered(MouseEvent m) {
+				if( ((Elemento) m.getSource()).pressed() )
+						((Elemento) m.getSource()).desenharTrajecto();
+			}
+		});
+	}
+
+	public boolean pressed(){
+		return pressed;
+	}
+	public void pressed(boolean p){
+		pressed = p;
+	}
+
+	public abstract void desenharTrajecto();
+
+	public void corrigirCantos(){
+			
+		Elemento ultimo = Jogo.tabuleiro().trajecto().ultimo();
+		Elemento penultimo = Jogo.tabuleiro().trajecto().penultimo();
+
+		if(ultimo==null || penultimo==null){
+			return;
+		}
+
+		if(!(ultimo instanceof Peca)){
+			
+			if(penultimo.getTabX()>ultimo.getTabX() && ultimo.getTabX()==x){
+				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()<y)
+					new LigacaoCantoNO(ultimo.getTabX(),ultimo.getTabY());
+				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()>y)
+					new LigacaoCantoSO(ultimo.getTabX(),ultimo.getTabY());
+			}
+
+			if(penultimo.getTabX()==ultimo.getTabX() && ultimo.getTabX()>x){
+				if(penultimo.getTabY()>ultimo.getTabY() && ultimo.getTabY()==y)
+					new LigacaoCantoNE(ultimo.getTabX(),ultimo.getTabY());
+				if(penultimo.getTabY()<ultimo.getTabY() && ultimo.getTabY()==y)
+					new LigacaoCantoSE(ultimo.getTabX(),ultimo.getTabY());
+			}
+
+			if(penultimo.getTabX()==ultimo.getTabX() && ultimo.getTabX()<x){
+				if(penultimo.getTabY()<ultimo.getTabY() && ultimo.getTabY()==y)
+					new LigacaoCantoSO(ultimo.getTabX(),ultimo.getTabY());
+				if(penultimo.getTabY()>ultimo.getTabY() && ultimo.getTabY()==y)
+					new LigacaoCantoNO(ultimo.getTabX(),ultimo.getTabY());
+			}
+			if(penultimo.getTabX()<ultimo.getTabX() && ultimo.getTabX()==x){
+				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()>y)
+					new LigacaoCantoSE(ultimo.getTabX(),ultimo.getTabY());
+				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()<y)
+					new LigacaoCantoNE(ultimo.getTabX(),ultimo.getTabY());
+			}
+		}
 	}
 
 	@Override

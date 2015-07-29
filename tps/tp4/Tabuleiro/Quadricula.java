@@ -15,8 +15,6 @@ public class Quadricula extends JPanel{
 	public Quadricula(){
 
 		setLayout(new CardLayout());
-
-		//addMouseListener(new QuadriculaListener(this,trajecto));
 	}
 
 	public void replace(Elemento e){

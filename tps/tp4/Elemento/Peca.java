@@ -30,9 +30,13 @@ public class Peca extends Elemento{
 	public int valor(){
 		return num;
 	}
-	//public void desenhar(){
 
-	//}
+	public void desenharTrajecto(){
+		if(podeEntrar(Jogo.tabuleiro().trajecto().getValue())){
+			super.corrigirCantos();
+			Jogo.tabuleiro().trajecto().inserir(this);
+		}
+	}
 
 	@Override
 	public boolean podeEntrar(int currentValue){
