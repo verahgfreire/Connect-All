@@ -1,0 +1,1 @@
+Main-Class: tps.tp4.Jogo
