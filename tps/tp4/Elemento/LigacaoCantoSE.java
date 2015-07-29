@@ -20,8 +20,4 @@ public class LigacaoCantoSE extends LigacaoCanto{
         g.setColor(Color.BLACK);
         g.fillRect(0,0,getWidth()/3,getHeight()/3);
 	}
-
-	public void desenharTrajecto(){
-		super.desenharTrajecto();
-	}
 }

@@ -13,9 +13,12 @@ public class Ligacao extends Elemento{
 
 	public Ligacao(int x, int y){
 		super(x,y);
+		
 		Jogo.tabuleiro().quadricula(x,y).replace(this);
 		this.color = Jogo.tabuleiro().trajecto().getColor();
 		Jogo.tabuleiro().quadricula(x,y).replace(this);
+		
+		Jogo.tabuleiro().trajecto().inserir(this);
 	}
 
 	@Override
@@ -24,5 +27,11 @@ public class Ligacao extends Elemento{
         g.setColor(color);
 	}
 
-	public void desenharTrajecto(){}
+	public boolean podeEntrar(int currentValue){
+		return false;
+	}
+
+	public void alterarTrajecto(){	
+		//eliminarTrajecto
+	}
 }

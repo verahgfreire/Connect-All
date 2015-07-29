@@ -33,18 +33,18 @@ public abstract class Elemento extends JLabel{
 
 			public void mousePressed(MouseEvent m) {
 				((Elemento) m.getSource()).pressed(true);
-				((Elemento) m.getSource()).desenharTrajecto();
+				((Elemento) m.getSource()).alterarTrajecto();
 			}
 
 			public void mouseClicked(MouseEvent m) {	
-				((Elemento) m.getSource()).desenharTrajecto();
+				((Elemento) m.getSource()).alterarTrajecto();
 			}
 
 			public void mouseExited(MouseEvent m) {}
 
 			public void mouseEntered(MouseEvent m) {
 				if( ((Elemento) m.getSource()).pressed() )
-						((Elemento) m.getSource()).desenharTrajecto();
+						((Elemento) m.getSource()).alterarTrajecto();
 			}
 		});
 	}
@@ -54,48 +54,6 @@ public abstract class Elemento extends JLabel{
 	}
 	public void pressed(boolean p){
 		pressed = p;
-	}
-
-	public abstract void desenharTrajecto();
-
-	public void corrigirCantos(){
-			
-		Elemento ultimo = Jogo.tabuleiro().trajecto().ultimo();
-		Elemento penultimo = Jogo.tabuleiro().trajecto().penultimo();
-
-		if(ultimo==null || penultimo==null){
-			return;
-		}
-
-		if(!(ultimo instanceof Peca)){
-			
-			if(penultimo.getTabX()>ultimo.getTabX() && ultimo.getTabX()==x){
-				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()<y)
-					new LigacaoCantoNO(ultimo.getTabX(),ultimo.getTabY());
-				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()>y)
-					new LigacaoCantoSO(ultimo.getTabX(),ultimo.getTabY());
-			}
-
-			if(penultimo.getTabX()==ultimo.getTabX() && ultimo.getTabX()>x){
-				if(penultimo.getTabY()>ultimo.getTabY() && ultimo.getTabY()==y)
-					new LigacaoCantoNE(ultimo.getTabX(),ultimo.getTabY());
-				if(penultimo.getTabY()<ultimo.getTabY() && ultimo.getTabY()==y)
-					new LigacaoCantoSE(ultimo.getTabX(),ultimo.getTabY());
-			}
-
-			if(penultimo.getTabX()==ultimo.getTabX() && ultimo.getTabX()<x){
-				if(penultimo.getTabY()<ultimo.getTabY() && ultimo.getTabY()==y)
-					new LigacaoCantoSO(ultimo.getTabX(),ultimo.getTabY());
-				if(penultimo.getTabY()>ultimo.getTabY() && ultimo.getTabY()==y)
-					new LigacaoCantoNO(ultimo.getTabX(),ultimo.getTabY());
-			}
-			if(penultimo.getTabX()<ultimo.getTabX() && ultimo.getTabX()==x){
-				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()>y)
-					new LigacaoCantoSE(ultimo.getTabX(),ultimo.getTabY());
-				if(penultimo.getTabY()==ultimo.getTabY() && ultimo.getTabY()<y)
-					new LigacaoCantoNE(ultimo.getTabX(),ultimo.getTabY());
-			}
-		}
 	}
 
 	@Override
@@ -110,29 +68,26 @@ public abstract class Elemento extends JLabel{
 		return y;
 	}
 
+	public abstract void alterarTrajecto();
+	public void corrigirCanto(int x, int y){}
+
+
 	public boolean podeEntrar(int currentValue){
-		if(currentValue==0){ // obrigatório comecar numa peça
+
+		if(Jogo.tabuleiro().trajecto().contem(this))
 			return false;
-		}
-		if(Jogo.tabuleiro().trajecto().contem(this)){
+
+		Elemento ultimo = Jogo.tabuleiro().trajecto().ultimo();
+
+		if(Math.abs(ultimo.getTabX()-x)>1 || Math.abs(ultimo.getTabY()-y)>1)
 			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)>1){
+
+		if(Math.abs(ultimo.getTabX()-x)==1 && Math.abs(ultimo.getTabY()-y)!=0)
 			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)>1){
+
+		if(Math.abs(ultimo.getTabY()-y)==1 && Math.abs(ultimo.getTabX()-x)!=0)
 			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)==1){
-			if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)!=0){
-				return false;
-			}
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)==1){
-			if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)!=0){
-				return false;
-			}
-		}
+
 		return true;
 	}
 }

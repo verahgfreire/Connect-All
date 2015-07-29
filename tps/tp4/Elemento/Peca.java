@@ -31,9 +31,9 @@ public class Peca extends Elemento{
 		return num;
 	}
 
-	public void desenharTrajecto(){
+	public void alterarTrajecto(){
+
 		if(podeEntrar(Jogo.tabuleiro().trajecto().getValue())){
-			super.corrigirCantos();
 			Jogo.tabuleiro().trajecto().inserir(this);
 		}
 	}
@@ -46,26 +46,7 @@ public class Peca extends Elemento{
 		if(currentValue != num - 1){
 			return false;
 		}
-		if(Jogo.tabuleiro().trajecto().contem(this)){
-			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)>1){
-			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)>1){
-			return false;
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)==1){
-			if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)!=0){
-				return false;
-			}
-		}
-		if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabY()-y)==1){
-			if(Math.abs(Jogo.tabuleiro().trajecto().ultimo().getTabX()-x)!=0){
-				return false;
-			}
-		}
-		return true;
+		return super.podeEntrar(currentValue);
 	}
 
 	@Override

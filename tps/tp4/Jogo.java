@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Jogo{
 
 	private static Tabuleiro tabActual;
-	public static final String ROOTPATH = "/Users/verafreire/Desktop/Projecto/Connect-All/";
+	public static final String ROOTPATH = "";
 
 
 	public Jogo(){

@@ -19,15 +19,22 @@ public class ElementoVazio extends Elemento{
         super.paintComponent(g); 
 	}
 
-	public void desenharTrajecto(){	
+	public void alterarTrajecto(){	
 		if(podeEntrar(Jogo.tabuleiro().trajecto().getValue())){
-			
-			super.corrigirCantos();
 
-			if(Jogo.tabuleiro().trajecto().ultimo().getTabX() == x)
-				new LigacaoRectaVertical(x,y);
-			else if(Jogo.tabuleiro().trajecto().ultimo().getTabY() == y)
-				new LigacaoRectaHorizontal(x,y);
+			Elemento ultimo = Jogo.tabuleiro().trajecto().ultimo();
+
+			if(ultimo.getTabX() == x)
+				new LigacaoRectaVertical(x,y, ultimo.getTabY()-y);
+			else if(ultimo.getTabY() == y)
+				new LigacaoRectaHorizontal(x,y,ultimo.getTabX()-x);
 		}
+	}
+
+	public boolean podeEntrar(int currentValue){
+		if(currentValue==0){ // obrigatório comecar numa peça
+			return false;
+		}
+		return super.podeEntrar(currentValue);
 	}
 }

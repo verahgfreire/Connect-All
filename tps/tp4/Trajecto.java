@@ -31,14 +31,9 @@ public class Trajecto {
 			valorActual = ((Peca)el).valor();
 			corActual = ((Peca)el).color();
 		}
-		
+		if(ultimo()!=null)
+			ultimo().corrigirCanto(el.getTabX(),el.getTabY());
 		percurso.add(el);
-		
-		 /*System.out.print("{");
-		 for (int i = 0; i < percurso.size(); i++) {
-		 System.out.print("["+percurso.get(i).getTabX()+","+percurso.get(i).getTabY()+"], ");
-		 }
-		 System.out.println("}");*/
 	}
 
 	public int obter(int x, int y){
@@ -59,12 +54,7 @@ public class Trajecto {
 		}
 		return percurso.get(percurso.size() - 1);
 	}
-	public Elemento penultimo(){
-		if(percurso.size()<2){
-			return null;
-		}
-		return percurso.get(percurso.size() - 2);
-	}
+
 	public boolean contem(Elemento e){
 		return percurso.contains(e);
 	}

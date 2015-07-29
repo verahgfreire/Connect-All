@@ -13,7 +13,6 @@ public class Quadricula extends JPanel{
 	Elemento elem = null;
 
 	public Quadricula(){
-
 		setLayout(new CardLayout());
 	}
 

@@ -18,8 +18,4 @@ public abstract class LigacaoCanto extends Ligacao{
     protected void paintComponent (Graphics g){
         super.paintComponent(g);
 	}
-
-	public void desenharTrajecto(){
-		super.desenharTrajecto();
-	}
 }

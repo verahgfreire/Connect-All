@@ -9,8 +9,8 @@ import tps.tp4.*;
 
 public class LigacaoRectaVertical extends LigacaoRecta{
 
-	public LigacaoRectaVertical(int x, int y){
-		super(x,y);
+	public LigacaoRectaVertical(int x, int y, int origem){
+		super(x,y,origem);
 	}
 
 	@Override
@@ -19,7 +19,19 @@ public class LigacaoRectaVertical extends LigacaoRecta{
         g.fillRect(getWidth()/3,0,getWidth()/3,getHeight());
 	}
 
-	public void desenharTrajecto(){
-		super.desenharTrajecto();
+	@Override
+	public void corrigirCanto(int newX, int newY){
+		if(origem<0){
+			if(x<newX)
+				new LigacaoCantoSO(x,y);
+			if(x>newX)
+				new LigacaoCantoSE(x,y);	
+		}
+		if(origem>0){
+			if(x<newX)
+				new LigacaoCantoNO(x,y);
+			if(x>newX)
+				new LigacaoCantoNE(x,y);	
+		}
 	}
 }
