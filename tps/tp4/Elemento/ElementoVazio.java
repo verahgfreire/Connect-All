@@ -4,8 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import tps.tp4.*;
-import tps.tp4.Elemento.Ligacao.*;
+import tps.tp4.Jogo;
 import tps.tp4.Elemento.Ligacao.LigacaoRecta.*;
 
 public class ElementoVazio extends Elemento{

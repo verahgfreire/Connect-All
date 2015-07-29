@@ -5,10 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-import tps.tp4.*;
-import tps.tp4.Elemento.*;
-import tps.tp4.Elemento.Ligacao.LigacaoCanto.*;
-import tps.tp4.Elemento.Ligacao.LigacaoRecta.*;
+import tps.tp4.Jogo;
+import tps.tp4.Elemento.Elemento;
 
 public class Ligacao extends Elemento{
 
