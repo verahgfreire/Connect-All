@@ -14,7 +14,11 @@ public abstract class LigacaoRecta extends Ligacao{
 
 	public LigacaoRecta(int x, int y, int origem){
 		super(x,y);
+		
+		this.color = Jogo.tabuleiro().trajecto().getColor();
 		this.origem = origem;
+
+		Jogo.tabuleiro().quadricula(x,y).replace(this);
 		Jogo.tabuleiro().trajecto().inserir(this);
 	}
 

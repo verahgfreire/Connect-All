@@ -10,16 +10,11 @@ import tps.tp4.Elemento.Elemento;
 
 public class Ligacao extends Elemento{
 
-	private Color color;
+	protected Color color;
 
 	public Ligacao(int x, int y){
 		super(x,y);
-		
 		Jogo.tabuleiro().quadricula(x,y).replace(this);
-		this.color = Jogo.tabuleiro().trajecto().getColor();
-		Jogo.tabuleiro().quadricula(x,y).replace(this);
-		
-		Jogo.tabuleiro().trajecto().inserir(this);
 	}
 
 	@Override
@@ -30,6 +25,9 @@ public class Ligacao extends Elemento{
 
 	public boolean podeEntrar(int currentValue){
 		return false;
+	}
+	public Color getColor(){
+		return color;
 	}
 
 	public void alterarTrajecto(){	

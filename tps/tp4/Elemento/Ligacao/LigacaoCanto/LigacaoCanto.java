@@ -12,6 +12,10 @@ public abstract class LigacaoCanto extends Ligacao{
 
 	public LigacaoCanto(int x, int y){
 		super(x,y);
+
+		this.color = ((Ligacao) Jogo.tabuleiro().trajecto().ultimo()).getColor();
+		
+		Jogo.tabuleiro().quadricula(x,y).replace(this);
 		Jogo.tabuleiro().trajecto().replace(this,x,y);
 	}
 
