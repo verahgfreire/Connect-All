@@ -1,0 +1,3 @@
+dim 5; 
+peca 1 3; peca 3 3; peca 4 3; peca 1 1; peca 2 0;
+peca 4 0;

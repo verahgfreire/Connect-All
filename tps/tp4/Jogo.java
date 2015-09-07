@@ -2,36 +2,32 @@ package tps.tp4;
 
 import tps.tp4.Tabuleiro.*;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
+public class Jogo {
 
-public class Jogo{
+	protected static Tabuleiro tabActual;
+	public static final String ROOTPATH = "/Users/verafreire/Documents/4º SEMESTRE/MoP/Code/MOP/src/";
+	
+	private static JFrame frame;
 
-	private static Tabuleiro tabActual;
-	public static final String ROOTPATH = "";
-
-
-	public Jogo(){
-
+	public Jogo() {
+		new PainelInicial();
 	}
 
-	public static Tabuleiro tabuleiro(){
+	public static Tabuleiro tabuleiro() {
 		return tabActual;
 	}
-
-	public static void main(String args[]){
-		
-		JFrame frame = new JFrame("..:Connect-All:..");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        tabActual = new Tabuleiro();
-        tabActual.desenhar();
-        
-        frame.getContentPane().add(tabActual);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setVisible(true);
+	
+	public static void setTabuleiroAct(Tabuleiro t){
+		tabActual = t;
+	}
+	
+	public static JFrame frame(){
+		return frame;
+	}
+	
+	public static void main(String[] args) {
+		new Jogo();
 	}
 }

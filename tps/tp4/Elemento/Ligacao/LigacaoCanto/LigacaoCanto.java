@@ -1,22 +1,22 @@
 package tps.tp4.Elemento.Ligacao.LigacaoCanto;
 
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.border.LineBorder;
 
 import tps.tp4.Jogo;
 import tps.tp4.Elemento.Ligacao.Ligacao;
 
 public abstract class LigacaoCanto extends Ligacao{
 
-	public LigacaoCanto(int x, int y){
-		super(x,y);
+	private static final long serialVersionUID = 1L;
+	protected int origem;
 
+	public LigacaoCanto(int x, int y, int origem){
+		super(x,y);
+		this.origem = origem;
 		this.color = ((Ligacao) Jogo.tabuleiro().trajecto().ultimo()).getColor();
-		
 		Jogo.tabuleiro().quadricula(x,y).replace(this);
-		Jogo.tabuleiro().trajecto().replace(this,x,y);
+		Jogo.tabuleiro().trajecto().inserir(this);
+//		System.out.println("origem:"+origem);
 	}
 
 	@Override
