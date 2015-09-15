@@ -1,4 +1,4 @@
-package tps.tp4.Tabuleiro;
+package tps.tp4.tabuleiros;
 
 import java.awt.Color;
 

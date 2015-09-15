@@ -12,23 +12,25 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import tps.tp4.Tabuleiro.*;
-
 public class MenuNivel {
 
-	int numPuzzle = 7; // TODO
 	private static JFrame frame;
 
 	public MenuNivel() {
 		menu();
 	}
 
+	/*
+	 * Devolve a frame actual
+	 */
 	public static JFrame frame() {
 		return frame;
 	}
 
+	/*
+	 * Cria o menu de niveis e chama o menu de puzzles do nivel escolhido
+	 */
 	public void menu() {
-
 		// create a JFrame
 		frame = new JFrame();
 		// set title
@@ -49,7 +51,7 @@ public class MenuNivel {
 
 		JLabel label = new JLabel("Menu");
 		label.setFont(new Font("Courier New", Font.BOLD + Font.ITALIC, 36));
-		label.setForeground(new Color(110, 180, 50));
+		label.setForeground(Color.WHITE);
 		label.setOpaque(true);
 		label.setBackground(Color.black);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -62,8 +64,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button44.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim4(numPuzzle);
+				new MenuPuzzles(4);
 			}
 		});
 
@@ -74,8 +78,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button55.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim5(numPuzzle);
+				new MenuPuzzles(5);
 			}
 		});
 
@@ -86,8 +92,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button66.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim6(numPuzzle);
+				new MenuPuzzles(6);
 			}
 		});
 
@@ -98,8 +106,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button77.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim7(numPuzzle);
+				new MenuPuzzles(7);
 			}
 		});
 
@@ -110,8 +120,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button88.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim8(numPuzzle);
+				new MenuPuzzles(8);
 			}
 		});
 
@@ -122,8 +134,10 @@ public class MenuNivel {
 		// set dynamic part =======================================
 		button99.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false); // you can't see me!
+				frame.dispose();
 
-				new TabuleiroDim9(numPuzzle);
+				new MenuPuzzles(9);
 			}
 		});
 

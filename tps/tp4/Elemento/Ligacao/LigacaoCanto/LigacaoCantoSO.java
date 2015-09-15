@@ -13,6 +13,9 @@ public class LigacaoCantoSO extends LigacaoCanto {
 		super(x, y, origem);
 	}
 
+	/*
+	 * Identico a LigacaoCantoSE mas desenha um canto inferior esquerdo
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -22,18 +25,18 @@ public class LigacaoCantoSO extends LigacaoCanto {
 		g.fillRect(getWidth() - getWidth() / 3, 0, getWidth() / 3,
 				getHeight() / 3);
 	}
-	
+
 	@Override
 	public void corrigirCanto(int newX, int newY) {
-		if(origem>0 && newY > y)
+		if (origem > 0 && newY > y)
 			new LigacaoCantoNO(x, y, origem);
-		if(origem>0 && newX < x)
-			new LigacaoRectaHorizontal(x,y,origem);
-		
-		if(origem<0 && newY>y)
-			new LigacaoRectaVertical(x,y,origem);
-		
-		if(origem<0 && newX < x)
+		if (origem > 0 && newX < x)
+			new LigacaoRectaHorizontal(x, y, origem);
+
+		if (origem < 0 && newY > y)
+			new LigacaoRectaVertical(x, y, origem);
+
+		if (origem < 0 && newX < x)
 			new LigacaoCantoSE(x, y, origem);
 	}
 }

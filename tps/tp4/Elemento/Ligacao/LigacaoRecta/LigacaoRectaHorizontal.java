@@ -11,25 +11,32 @@ public class LigacaoRectaHorizontal extends LigacaoRecta {
 		super(x, y, origem);
 	}
 
+	/*
+	 * Desenha uma ligacao recta horizontal
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.fillRect(0, getHeight() / 3, getWidth(), getHeight() / 3);
 	}
 
+	/*
+	 * Corrige a peca anterior, no caso de se tornar canto aquando da criacao da
+	 * ligacao horizontal
+	 */
 	@Override
 	public void corrigirCanto(int newX, int newY) {
 		if (origem < 0) {
 			if (y < newY)
-				new LigacaoCantoNE(x, y,-1);
+				new LigacaoCantoNE(x, y, -1);
 			if (y > newY)
-				new LigacaoCantoSE(x, y,1);
+				new LigacaoCantoSE(x, y, 1);
 		}
 		if (origem > 0) {
 			if (y < newY)
-				new LigacaoCantoNO(x, y,-1);
+				new LigacaoCantoNO(x, y, -1);
 			if (y > newY)
-				new LigacaoCantoSO(x, y,1);
+				new LigacaoCantoSO(x, y, 1);
 		}
 	}
 }

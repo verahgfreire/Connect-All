@@ -1,4 +1,4 @@
-package tps.tp4.Tabuleiro;
+package tps.tp4.tabuleiros;
 
 import java.awt.Color;
 
@@ -12,8 +12,12 @@ public class TabuleiroDim4 extends Tabuleiro {
 		super(dim, name, numPuzzle);
 	}
 
+	/*
+	 * Enumerado com as cores das peças
+	 */
 	public enum CorDasPecas {
-		one(197, 40, 4), two(174, 197, 40), three(40, 197, 80), four(40, 131, 197);
+		one(197, 40, 4), two(174, 197, 40), three(40, 197, 80), four(40, 131,
+				197);
 
 		private int r;
 		private int g;
@@ -26,8 +30,12 @@ public class TabuleiroDim4 extends Tabuleiro {
 		}
 	}
 
-	public Color getColor(int nColor){
+	/*
+	 * Devolve a cor da peca de valor correspondente
+	 */
+	public Color getColor(int nColor) {
 		CorDasPecas[] coresPecas = CorDasPecas.values();
-		return new Color(coresPecas[nColor - 1].r, coresPecas[nColor - 1].g,coresPecas[nColor - 1].b);
+		return new Color(coresPecas[nColor - 1].r, coresPecas[nColor - 1].g,
+				coresPecas[nColor - 1].b);
 	}
 }

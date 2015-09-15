@@ -1,6 +1,6 @@
 package tps.tp4;
 
-import tps.tp4.Tabuleiro.*;
+import tps.tp4.tabuleiros.*;
 
 import javax.swing.*;
 
@@ -15,14 +15,23 @@ public class Jogo {
 		new PainelInicial();
 	}
 
+	/*
+	 * Devolve o tabuleiro actual
+	 */
 	public static Tabuleiro tabuleiro() {
 		return tabActual;
 	}
 	
+	/*
+	 * Guarda o tabuleiro actual
+	 */
 	public static void setTabuleiroAct(Tabuleiro t){
 		tabActual = t;
 	}
 	
+	/*
+	 * Devolve a frame actual
+	 */
 	public static JFrame frame(){
 		return frame;
 	}

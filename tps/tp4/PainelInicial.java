@@ -25,13 +25,17 @@ public class PainelInicial {
 		painelInicial();
 	}
 
-	public void painelInicial(){
+	/*
+	 * Cria o painel inicial do jogo com botao para redirecionamento ao menu de
+	 * niveis
+	 */
+	public void painelInicial() {
 		// create a JFrame
 		frame = new JFrame();
 		// set title
 		frame.setTitle("...:Connect-All:...");
 		// set size and location
-		frame.setSize(500, 500);
+		frame.setSize(600, 300);
 		// to center a frame
 		frame.setLocationRelativeTo(null);
 		// set default close operation
@@ -43,11 +47,10 @@ public class PainelInicial {
 
 		// set content pane background color
 		frame.getContentPane().setBackground(Color.black);
-		
+
 		BufferedImage img;
 		try {
-			img = ImageIO.read(new File(Jogo.ROOTPATH
-					+ "tps/tp4/logo.png"));
+			img = ImageIO.read(new File(Jogo.ROOTPATH + "tps/tp4/logo.png"));
 
 			ImageIcon icon = new ImageIcon(img);
 			JLabel label = new JLabel(icon);
@@ -55,12 +58,12 @@ public class PainelInicial {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.black);
 
 		JButton button1 = new JButton("Play Game");
-		button1.setPreferredSize(new Dimension(260,50));
+		button1.setPreferredSize(new Dimension(260, 50));
 		panel.add(button1);
 
 		// set dynamic part =======================================
@@ -75,20 +78,6 @@ public class PainelInicial {
 			}
 		});
 
-		JButton button2 = new JButton("Additional Info");
-		button2.setPreferredSize(new Dimension(260,50));
-		panel.add(button2);
-
-		// set dynamic part =======================================
-		button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false); // you can't see me!
-				frame.dispose(); // Destroy the JFrame object
-
-				// new Help();
-			}
-		});
-		
 		frame.add(panel);
 
 		// puts the frame visible (is not visible at start)

@@ -12,12 +12,18 @@ public class LigacaoRectaVertical extends LigacaoRecta {
 		super(x, y, origem);
 	}
 
+	/*
+	 * Identica a LigacaoRectaHorizontal mas desenha uma ligacao vertical
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.fillRect(getWidth() / 3, 0, getWidth() / 3, getHeight());
 	}
 
+	/*
+	 * Identico na LigacaoRectaHorizontal
+	 */
 	@Override
 	public void corrigirCanto(int newX, int newY) {
 		if (origem < 0) {
